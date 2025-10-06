@@ -106,7 +106,7 @@ function setupCaseLinks() {
   $$('.case-link').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      document.querySelector('.device-screen').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.querySelector('#growth').scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   });
 }
@@ -189,6 +189,12 @@ function setupAnimationOnView(){
   }
 }
 
+function setupPhoneFloat() {
+  $$('.phone').forEach((phone, index) => {
+    phone.style.animation = `float 4s ease-in-out infinite ${index * 0.8}s`;
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // Removed clapboard intro
   setupFilters();
@@ -207,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   // Animate growth bars and counters when growth section enters view
   setupGrowthAnimations();
+  setupPhoneFloat();
 });
 
 // Interactive tilt for laptop following mouse

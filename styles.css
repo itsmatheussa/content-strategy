@@ -23,8 +23,8 @@ a{color:inherit;text-decoration:none}
 .nav{flex-wrap:wrap}
 .nav a{opacity:.9;transition:opacity .3s}
 .nav a:hover{opacity:1}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.12);transition:transform .3s cubic-bezier(.22,1,.36,1),background .3s,color .3s,box-shadow .3s}
-.btn:hover{transform:translateY(-2px);box-shadow:var(--glow-shadow)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.12);transition:transform .3s cubic-bezier(.22,1,.36,1),background .3s,color .3s,box-shadow .3s,scale .3s}
+.btn:hover{transform:translateY(-2px) scale(1.05);box-shadow:var(--glow-shadow);background:linear-gradient(135deg,#c99fff,#9b74ff)}
 .btn-accent{background:linear-gradient(135deg,#B48CFF,#8F66FF);border-color:transparent;color:#110a1e;font-weight:700}
 .btn-ghost{background:transparent}
 .btn-outline{background:transparent;border-color:rgba(255,255,255,.24)}
@@ -100,6 +100,7 @@ h2{font-family:"Playfair Display",serif;font-size:32px;margin:0 0 18px}
 .about-bullets{color:var(--muted)}
 
 /* Testimonials */
+.testimonials .container{padding:32px;border-radius:16px;background:var(--elev);box-shadow:var(--shadow)}
 .testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .testimonial{display:grid;grid-template-columns:64px 1fr;gap:12px;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:12px;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
 .testimonial:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
@@ -159,9 +160,9 @@ h2{font-family:"Playfair Display",serif;font-size:32px;margin:0 0 18px}
 /* Mobile mockups & growth counters */
 .growth{padding:64px 0;border-top:1px solid rgba(255,255,255,.06)}
 .growth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.phone{position:relative;background:linear-gradient(180deg,#0f0f14,#141424);border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:14px;box-shadow:0 20px 60px rgba(0,0,0,.45);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
-.phone:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.phone-screen{background:#0A0A0B;border-radius:18px;overflow:hidden;aspect-ratio:9/19.5;border:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;justify-content:flex-end;padding:14px;gap:10px}
+.phone{position:relative;background:linear-gradient(180deg,#0f0f14,#141424);border:1px solid rgba(255,255,255,.08);border-radius:32px;padding:16px;box-shadow:0 20px 60px rgba(0,0,0,.45),0 0 20px rgba(180,140,255,.2);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
+.phone:hover{transform:translateY(-6px);box-shadow:var(--shadow),0 0 30px rgba(180,140,255,.3)}
+.phone-screen{background:#0A0A0B;border-radius:20px;overflow:hidden;aspect-ratio:9/19.5;border:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;justify-content:flex-end;padding:14px;gap:10px;box-shadow:inset 0 0 10px rgba(255,255,255,.05)}
 .ba{position:relative;background:#0c0c12;border:1px dashed rgba(255,255,255,.14);border-radius:10px;overflow:hidden;display:grid;place-items:center;color:var(--muted);font-size:12px;height:140px}
 .ba img{width:100%;height:100%;object-fit:cover;display:none}
 .bars{display:flex;align-items:flex-end;gap:8px;height:110px}
@@ -177,6 +178,12 @@ h2{font-family:"Playfair Display",serif;font-size:32px;margin:0 0 18px}
 .faq-grid > div{padding:12px;}
 .faq-grid h3{font-size:18px;margin-bottom:6px;}
 .faq-grid p{font-size:14px;}
+
+/* Calendly popup override for smoother animation */
+.calendly-overlay{transition:opacity 0.3s ease-in-out,transform 0.3s ease-in-out;}
+.calendly-overlay.calendly-active{opacity:1;transform:scale(1);}
+.calendly-popup{box-shadow:0 20px 60px rgba(0,0,0,.6);border-radius:16px;animation:popup-fade 0.4s ease-out;}
+@keyframes popup-fade{0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
 
 /* Laptop parallax/tilt interactive */
 .stage:hover .laptop{transition:transform .2s}

@@ -58,46 +58,11 @@ function setupFilters() { /* filters removed for single short */ }
 
 function setupContact() {
   const wa = $('#letsStart');
-  const form = $('#contactForm');
-  const nameInput = $('#cName');
-  const companyInput = $('#cCompany');
-  const projectInput = $('#cProject');
-  const planButtons = $$('.plan-select');
-  let selectedPlanCode = '';
-  const encode = (s) => encodeURIComponent(s);
-  const phone = '5514996621675';
-  const buildMessage = () => {
-    const name = nameInput.value.trim() || 'Friend';
-    const company = companyInput.value.trim() || '(company)';
-    const project = projectInput.value.trim() || 'a video editing project';
-    const base = `hello Matheus, my name is ${name}, i work on ${company} and i want ${project}`;
-    let planText = '';
-    if (selectedPlanCode) {
-      const label = selectedPlanCode === '1' ? 'daily plan' : selectedPlanCode === '2' ? 'one month plan' : 'multi-month plan';
-      planText = ` — Plan: ${label} (${selectedPlanCode})`;
-    }
-    return base + planText;
-  };
-  const updateLinkAndEnable = () => {
-    const text = buildMessage();
-    wa.href = `https://wa.me/${phone}?text=${encode(text)}`;
-    const allFilled = nameInput.value.trim() && companyInput.value.trim() && projectInput.value.trim();
-    wa.classList.toggle('disabled', !allFilled);
-  };
-  form.addEventListener('input', updateLinkAndEnable);
-  updateLinkAndEnable();
-  wa.addEventListener('click', (e) => {
-    if (wa.classList.contains('disabled')) {
-      e.preventDefault();
-    }
-  });
-  // Plan selection buttons set hidden code but are optional
-  planButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      selectedPlanCode = btn.dataset.plan || '';
-      updateLinkAndEnable();
-    });
-  });
+  if (wa) {
+    const encode = (s) => encodeURIComponent(s);
+    const phone = '5514996621675';
+    wa.href = `https://wa.me/${phone}?text=${encode("Hi Matheus, I would like to know how it works")}`;
+  }
 }
 
 function setYear(){ $('#year').textContent = new Date().getFullYear(); }

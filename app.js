@@ -16,6 +16,11 @@ function renderGallery() {
   const video = videos[0];
   const src = `https://www.youtube.com/embed/${video.id}?autoplay=1&mute=0&modestbranding=1&rel=0&playsinline=1`;
   ui.innerHTML = `<div class="player active"><iframe title="${video.title}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen src="${src}"></iframe></div>`;
+  // Force play if needed
+  const iframe = ui.querySelector('iframe');
+  iframe.addEventListener('load', () => {
+    iframe.contentWindow.postMessage({event: 'command', func: 'playVideo', args: []}, '*');
+  });
 }
 
 function openPlayer(video) {

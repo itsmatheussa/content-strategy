@@ -23,10 +23,17 @@
         </div>
       </div>
       <nav class="nav" role="navigation" aria-label="Primary">
-        <a href="#growth">Growth</a>
-        <a href="#cases">Results</a>
-        <a href="#services">How It Works</a>
-        <a href="#pricing">Packages</a>
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#growth">Growth</a></li>
+          <li><a href="#cases">Results</a></li>
+          <li><a href="#services">How It Works</a></li>
+          <li><a href="#pricing">Packages</a></li>
+        </ul>
         <a class="btn btn-accent" href="#services">Know more</a>
       </nav>
     </div>
@@ -346,7 +353,7 @@
         <h2>Ready to <span style="color: #7B60B3;">SKYROCKET</span> Your Brand?</h2>
         <p>Take the next step towards building a powerful personal brand that drives growth and revenue. Schedule a meeting today to discuss how we can tailor our services to your needs.</p>
         <div class="cta-row" style="justify-content: center; margin-top: 20px;">
-          <a class="btn btn-accent book-meeting" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/multitask_/30min'}); return false;">Book Meeting</a>
+          <a class="btn btn-accent book-meeting">Book Meeting</a>
         </div>
       </div>
     </section>
@@ -366,5 +373,7 @@
 Notes:
 - Place your portrait at assets/matheus.jpg (500–1000px wide, optimized WebP/AVIF recommended).
 - All animations respect prefers-reduced-motion.
+- For Calendly customization: Go to your Calendly account > Account > Branding. Set background to dark gray (e.g., #121212), text to white (#FFFFFF), primary to purple (#B48CFF).
+- In Calendly, edit your event type (30min): Add custom questions - First: "Which plan are you interested in?" (dropdown: Viral, Supreme, Deluxe). Second: "Your Instagram handle" (text). Answers will appear in notifications.
 -->
 </html>

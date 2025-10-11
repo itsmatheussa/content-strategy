@@ -184,6 +184,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Animate growth bars and counters when growth section enters view
   setupGrowthAnimations();
   setupPhoneFloat();
+  setupMobileMenu();
+  setupCalendly();
 });
 
 // Interactive tilt for laptop following mouse
@@ -253,4 +255,47 @@ function setupGrowthAnimations(){
     });
   },{threshold:.25});
   io.observe(section);
+}
+
+function setupMobileMenu() {
+  const toggle = document.querySelector('.menu-toggle');
+  const links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('active');
+      toggle.classList.toggle('active');
+    });
+  }
+}
+
+function setupCalendly() {
+  let selectedPlan = '';
+  $$('.plan-select').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      selectedPlan = btn.dataset.plan;
+      document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  const bookBtn = $('.book-meeting');
+  if (bookBtn) {
+    bookBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      let planName = '';
+      if (selectedPlan === '1') planName = 'Viral';
+      else if (selectedPlan === '2') planName = 'Supreme';
+      else if (selectedPlan === '3') planName = 'Deluxe';
+
+      Calendly.initPopupWidget({
+        url: 'https://calendly.com/multitask_/30min',
+        prefill: {
+          customAnswers: {
+            a1: planName // Prefill the first custom question (plan)
+            // a2 would be Instagram, but we can't prefill it without user input here
+          }
+        }
+      });
+    });
+  }
 }
